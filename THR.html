@@ -1,46 +1,488 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
-        name='viewport' />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>THR</title>
-    <meta name="description" content="THR">
-    <meta property="og:title" content="THR" />
-    <meta property="og:description" content="THR">
-    <link rel="shortcut icon" type="image/x-icon" href="img/Card-Logo.png">
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+    name='viewport' />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>THR - Happy Eid Mubarak</title>
+  <meta name="description" content="THR">
+  <meta property="og:title" content="THR" />
+  <meta property="og:description" content="THR">
+  <link rel="shortcut icon" type="image/x-icon" href="Card-Logo.png">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ======================== */
+    /* REFINED THR PAGE */
+    /* ======================== */
+
+    :root {
+      --primary: #01787E;
+      --secondary: #f96c4c;
+      --light-bg: #fcebe7;
+      --card-bg: #ffffff;
+      --text-dark: #2d3436;
+      --text-light: #666666;
+      --success: #27ae60;
+      --info: #3498db;
+    }
+
+    * {
+      transition: all 0.3s ease;
+    }
+
+    body {
+      min-height: 100vh;
+      min-width: 100vw;
+      background: var(--light-bg);
+      position: relative;
+      font-family: "Josefin Sans", sans-serif;
+      color: var(--primary);
+      overflow-x: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    /* ======================== */
+    /* BOX CONTAINER */
+    /* ======================== */
+
+    .box {
+      position: relative;
+      width: 100%;
+      max-width: 380px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      opacity: 0;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ======================== */
+    /* PAYMENT SECTION */
+    /* ======================== */
+
+    .payment {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      animation: fadeIn 0.8s ease-out 0.2s both;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .payment h3 {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin: 0 0 1.5rem 0;
+      font-weight: 700;
+      line-height: 1.5;
+      animation: fadeInDown 0.8s ease-out 0.3s both;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ======================== */
+    /* PAYMENT METHOD SECTIONS */
+    /* ======================== */
+
+    .payment-method {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px dashed #ddd;
+      animation: fadeIn 0.8s ease-out var(--delay) both;
+    }
+
+    .payment-method:last-of-type {
+      border-bottom: none;
+      margin-bottom: 1rem;
+      padding-bottom: 0;
+    }
+
+    .payment-method:nth-of-type(2) {
+      --delay: 0.4s;
+    }
+
+    .payment-method:nth-of-type(3) {
+      --delay: 0.5s;
+    }
+
+    .payment-method p {
+      margin: 0.5rem 0;
+      font-size: 0.95rem;
+      color: var(--text-light);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .payment-method p:first-child {
+      color: var(--text-dark);
+      font-size: 1rem;
+      margin-top: 0;
+    }
+
+    /* Phone number display */
+    #p1 {
+      font-size: 1.15rem !important;
+      color: var(--primary) !important;
+      font-weight: 700 !important;
+      font-family: 'Courier New', monospace;
+      letter-spacing: 2px;
+      padding: 0.75rem;
+      background: #f5f6fa;
+      border-radius: 8px;
+      margin: 0.8rem 0 !important;
+      text-transform: none;
+    }
+
+    /* ======================== */
+    /* BUTTONS */
+    /* ======================== */
+
+    .copy {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      margin: 0.8rem auto 0;
+      cursor: pointer;
+      letter-spacing: 1.5px;
+      color: #fff;
+      background: var(--secondary);
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(249, 108, 76, 0.3);
+      transition: all 0.3s ease;
+      outline: none;
+      font-family: "Josefin Sans", sans-serif;
+    }
+
+    .copy:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(249, 108, 76, 0.4);
+      background: #ff7a5e;
+    }
+
+    .copy:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 8px rgba(249, 108, 76, 0.3);
+    }
+
+    /* QR Scan button */
+    .copy[href] {
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    /* ======================== */
+    /* FOOTER MESSAGE */
+    /* ======================== */
+
+    .footer-message {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #eee;
+      animation: fadeIn 0.8s ease-out 0.6s both;
+    }
+
+    /* ======================== */
+    /* BACK BUTTON */
+    /* ======================== */
+
+    .back-btn {
+      position: fixed;
+      top: 1.5rem;
+      left: 1.5rem;
+      padding: 0.6rem 1.2rem;
+      background: var(--info);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+      transition: all 0.3s ease;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      z-index: 100;
+      animation: slideInLeft 0.6s ease-out 0.1s both;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(52, 152, 219, 0.4);
+      background: #2980b9;
+    }
+
+    .back-btn:active {
+      transform: translateY(0);
+    }
+
+    /* ======================== */
+    /* COPY FEEDBACK */
+    /* ======================== */
+
+    .copy-feedback {
+      display: none;
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 1rem 1.5rem;
+      background: var(--success);
+      color: white;
+      border-radius: 8px;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+      z-index: 200;
+      animation: slideInUp 0.4s ease-out;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+
+    .copy-feedback.show {
+      display: block;
+    }
+
+    /* ======================== */
+    /* RESPONSIVE DESIGN */
+    /* ======================== */
+
+    @media (max-width: 480px) {
+      .box {
+        max-width: 100%;
+        border-radius: 12px;
+      }
+
+      .payment {
+        padding: 2rem 1.25rem;
+      }
+
+      .payment h3 {
+        font-size: 1.15rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .payment-method {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.25rem;
+      }
+
+      #p1 {
+        font-size: 1.05rem !important;
+        letter-spacing: 1px;
+        padding: 0.6rem;
+      }
+
+      .copy {
+        padding: 0.65rem 1.25rem;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+      }
+
+      .back-btn {
+        top: 1rem;
+        left: 1rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+      }
+
+      .footer-message {
+        font-size: 0.8rem;
+        margin-top: 1.25rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .payment {
+        padding: 1.5rem 1rem;
+      }
+
+      .payment h3 {
+        font-size: 1.05rem;
+        margin-bottom: 1rem;
+      }
+
+      .payment-method p {
+        font-size: 0.9rem;
+      }
+
+      #p1 {
+        font-size: 0.95rem !important;
+        letter-spacing: 0.5px;
+        padding: 0.5rem;
+      }
+
+      .copy {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+      }
+
+      .back-btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+        top: 0.8rem;
+        left: 0.8rem;
+      }
+    }
+
+    /* ======================== */
+    /* UTILITY CLASSES */
+    /* ======================== */
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
 </head>
 
 <body>
+  <!-- Back Button -->
+  <button class="back-btn" onclick="goBack()">← Kembali</button>
 
+  <!-- Main Box -->
+  <div class="box">
+    <div class="payment">
+      <h3>Kita Kan Jauh 👉👈<br><span style="font-size: 0.8em; font-weight: 400; color: var(--text-light);">Boleh kirimin THR?</span></h3>
 
-    <!-- partial:index.partial.html -->
-    <div class="box">
-        <div class="payment">
-            <h3>Kita Kan Jauh,Boleh Kali👉👈</h3>
-            <p>Dana</p>
-            <p id="p1"><b>083174433837</b></p>
-            <button class="copy" onclick="copyToClipboard('#p1')">COPY</button>
-            <br>
-            <p>DANA QR</p>
-            <a target="_blank" href="Dana.png"><button class="copy">SCAN QR DANA</button></a>
-        </div>
+      <!-- Dana Method -->
+      <div class="payment-method">
+        <p>Dana</p>
+        <p id="p1">083174433837</p>
+        <button class="copy" onclick="copyToClipboard('#p1')">📋 Salin Nomor</button>
+      </div>
+
+      <!-- Dana QR Method -->
+      <div class="payment-method">
+        <p>Dana QR</p>
+        <a href="Dana.png" target="_blank" style="text-decoration: none;">
+          <button class="copy">🔍 Scan QR Dana</button>
+        </a>
+      </div>
+
+      <!-- Footer Message -->
+      <div class="footer-message">
+        <p>Terimakasih banyak! 🙏<br>Semoga berkah dan membawa kebaikan untuk kita semua.</p>
+      </div>
     </div>
+  </div>
 
-    <script>
-        function copyToClipboard(element) {
-            var $temp = $("<input>");
-            $("body").append($temp);
-            $temp.val($(element).text()).select();
-            document.execCommand("copy");
-            $temp.remove();
-        }
-    </script>
+  <!-- Copy Feedback -->
+  <div class="copy-feedback" id="feedback">✓ Nomor disalin!</div>
+
+  <!-- Scripts -->
+  <script>
+    // Copy to clipboard function with feedback
+    function copyToClipboard(element) {
+      const text = document.querySelector(element).innerText;
+      
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        // Modern approach
+        navigator.clipboard.writeText(text)
+          .then(() => {
+            showFeedback();
+          })
+          .catch(err => {
+            console.error('Copy failed:', err);
+            fallbackCopy(text);
+          });
+      } else {
+        // Fallback for older browsers
+        fallbackCopy(text);
+      }
+    }
+
+    // Fallback copy method
+    function fallbackCopy(text) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        showFeedback();
+      } catch (err) {
+        console.error('Fallback copy failed:', err);
+      }
+      document.body.removeChild(textarea);
+    }
+
+    // Show feedback message
+    function showFeedback() {
+      const feedback = document.getElementById('feedback');
+      feedback.classList.add('show');
+      
+      setTimeout(() => {
+        feedback.classList.remove('show');
+      }, 2000);
+    }
+
+    // Go back to main page
+    function goBack() {
+      window.history.back();
+    }
+
+    // Prevent accidental QR link clicks on mobile
+    document.addEventListener('contextmenu', function(e) {
+      // Allow right-click for copying etc.
+    });
+  </script>
 </body>
 
 </html>
